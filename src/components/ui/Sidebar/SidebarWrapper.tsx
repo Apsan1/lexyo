@@ -13,14 +13,14 @@ export default function SidebarDemo() {
   const links = [
     {
       label: "Dashboard",
-      href: "#",
+      href: "/",
       icon: (
         <IconBrandTabler className="h-5 w-5 text-neutral-700 dark:text-neutral-200" />
       ),
     },
     {
-      label: "Contents",
-      href: "#",
+      label: "Content Generator",
+      href: "generate",
       icon: (
         <IconTextScan2 className="h-5 w-5 text-neutral-700 dark:text-neutral-200" />
       ),
