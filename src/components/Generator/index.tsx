@@ -80,9 +80,18 @@ export default function GeneratorClient() {
           tone,
         });
         setArticle(result);
+        const saveRes = await fetch("/api/articles", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(result),
+        });
+
+        if (!saveRes.ok) {
+          console.error("Failed to save article:", await saveRes.text());
+        }
         setActiveTab("preview");
-      } catch (e: any) {
-        setError(e?.message || "Failed to generate article");
+      } catch (e) {
+        setError("Failed to generate article");
       }
     });
   };

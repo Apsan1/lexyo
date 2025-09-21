@@ -3,8 +3,7 @@ import { GeneratedArticle } from "@/types";
 import { Icon } from "@/components/ui/Icon";
 
 interface DashboardProps {
-  articles: any[];
-  onViewArticle: (article: GeneratedArticle) => void;
+  articles: GeneratedArticle[];
 }
 
 const StatCard: React.FC<{
@@ -30,10 +29,7 @@ const StatCard: React.FC<{
   </div>
 );
 
-export const Dashboard: React.FC<DashboardProps> = ({
-  articles = [],
-  onViewArticle,
-}) => {
+export const Dashboard: React.FC<DashboardProps> = ({ articles = [] }) => {
   const totalArticles = articles.length;
   const totalKeywords = articles.reduce(
     (acc, article) => acc + article.keywords.length,
@@ -76,17 +72,17 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <div className="overflow-x-auto">
           {articles.length > 0 ? (
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-50 dark:bg-neutral-800">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs text-gray-500 dark:text-gray-200 uppercase tracking-wider"
                   >
                     Title
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider"
                   >
                     Generated On
                   </th>
@@ -95,12 +91,15 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white dark:bg-neutral-800 divide-y divide-gray-600">
                 {articles.map((article, index) => (
-                  <tr key={index} className="hover:bg-gray-50">
+                  <tr
+                    key={index}
+                    className="hover:bg-gray-50 dark:hover:bg-neutral-900"
+                  >
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div
-                        className="text-sm font-medium text-gray-900 truncate"
+                        className="text-sm font-medium text-gray-900 dark:text-white truncate"
                         style={{ maxWidth: "400px" }}
                       >
                         {article.title}
@@ -111,10 +110,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                       {new Date(article.generatedAt).toLocaleString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button
-                        onClick={() => onViewArticle(article)}
-                        className="text-brand-primary hover:text-brand-dark font-bold"
-                      >
+                      <button className="text-white hover:text-brand-dark font-bold">
                         View
                       </button>
                     </td>

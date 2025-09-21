@@ -24,21 +24,20 @@ export interface InternalLinkingSuggestion {
 }
 
 export interface GeneratedArticle {
-  id: number;
-  title: string;
-  metaDescription: string;
-  slug: string;
-  keywords: string[];
-  articleContent: string;
-  seoSuggestions: string[];
-  jsonLd: string;
-  generatedAt: Date; // <-- use Date instead of string
-  backlinks: Backlink[];
-  imageSuggestions: ImageSuggestion[];
-  socialMediaPosts: SocialMediaPost[];
-  internalLinkingSuggestions: InternalLinkingSuggestion[];
-  furtherReading: FurtherReading[];
+    id: number;
+    title: string;
+    metaDescription: string;
+    slug: string;
+    keywords: string[];
+    articleContent: string;
+    seoSuggestions: string[];
+    jsonLd: string;
+    generatedAt: Date;
+    backlinks: Backlink[];
+    imageSuggestions: ImageSuggestion[];
+    socialMediaPosts: SocialMediaPost[];
+    internalLinkingSuggestions: InternalLinkingSuggestion[];
+    furtherReading: FurtherReading[];
 }
 
-
-export type tone = string;
+export type Tone = "Professional" | "Casual" | "Technical" | "Witty" | "Authoritative";

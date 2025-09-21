@@ -15,18 +15,18 @@ datasource db {
 }
 
 model GeneratedArticle {
-  id                      Int       @id @default(autoincrement())
-  title                   String
-  metaDescription         String
-  slug                    String    @unique
-  keywords                String[]
-  articleContent          String
-  seoSuggestions          String[]
-  jsonLd                  String
-  generatedAt             DateTime
-  backlinks               Json
-  imageSuggestions        Json
-  socialMediaPosts        Json
+  id                        Int      @id @default(autoincrement())
+  title                     String
+  metaDescription           String
+  slug                      String   @unique
+  keywords                  String[]
+  articleContent            String
+  seoSuggestions            String[]
+  jsonLd                    String
+  generatedAt               DateTime
+  backlinks                 Json
+  imageSuggestions          Json
+  socialMediaPosts          Json
   internalLinkingSuggestions Json
-  furtherReading          Json
+  furtherReading            Json
 }
