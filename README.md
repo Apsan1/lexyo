@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LexyO
+
+A modern web app to generate SEO-optimized articles using AI, manage them in a database, and view detailed structured data. Built with **Next.js (App Router)**, **TypeScript**, **Prisma**, and integrates an AI API for article generation.
+
+---
+
+## Features
+
+- **AI-powered article generation**: Generate articles based on topic, audience, keywords, and tone.
+- **Structured data support**: Automatically generates JSON-LD for SEO.
+- **Save and manage articles**: Stores articles in a PostgreSQL (or your choice) database via Prisma.
+- **Dynamic routing**: Redirects to a dedicated page for each generated article.
+- **Minimal and responsive UI**: Clean form input page with optional tone and questions.
+- **Export JSON**: Option to export generated articles as `.json` for reuse.
+
+---
+
+## Tech Stack
+
+- **Frontend**: Next.js 14+ (App Router), React, TypeScript, Tailwind CSS
+- **Backend**: Next.js API routes, Prisma ORM
+- **Database**: PostgreSQL (or other Prisma-supported DB)
+- **AI Integration**: Gemini API (replaceable with any Google-compatible API)
+- **Markdown Rendering**: ReactMarkdown
+- **Other Tools**: useTransition for smooth async handling
+
+---
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to run the app locally:
+
+### 1. Clone the repository
+
+### 2. Install dependencies
+
+```bash
+# Using npm
+npm install
+
+# Or using yarn
+yarn install
+
+# Or using pnpm
+pnpm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file in the root:
+
+```env
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME?schema=public"
+Gemini_API_KEY="your_Gemini_api_key_here"
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+```
+
+- Replace the `DATABASE_URL` with your PostgreSQL connection string.
+- Add your **Gemini API key**.
+- `NEXT_PUBLIC_SITE_URL` is used for dynamic links in structured data or redirects.
+
+---
+
+### 4. Set up the database with Prisma
+
+1. **Initialize Prisma**:
+
+```bash
+npx prisma init
+```
+
+2. **Check your `prisma/schema.prisma`** according to the repo.
+
+3. **Run migrations**:
+
+```bash
+npx prisma migrate dev --name init
+```
+
+This will:
+
+- Create the database tables
+- Generate Prisma client
+
+4. **Generate Prisma client** (if needed):
+
+```bash
+npx prisma generate
+```
+
+---
+
+### 5. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+1. Fill out the form:
 
-To learn more about Next.js, take a look at the following resources:
+   - **Topic** (required)
+   - **Audience** (required)
+   - **Focus Keyword** (optional)
+   - **Key Questions** (optional)
+   - **Tone** (select from dropdown)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Click **Generate Article**. The app will:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   - Send the data to the AI API
+   - Receive the generated article
+   - Save it in the database
+   - Redirect to `/generate/[id]` to view full article with metadata, JSON-LD, and export options.
 
-## Deploy on Vercel
+3. On the article page, you can:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   - View article content (rendered in Markdown)
+   - View article metadata and focus keywords
+   - Copy JSON-LD for SEO
+   - Export the article as a `.json` file
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+---
+
+## Environment Notes
+
+- **Prisma**: Make sure `DATABASE_URL` points to your database.
+- **AI API**: `Gemini_API_KEY` must be valid for article generation.
+- **Markdown**: Article content supports rich Markdown rendering.
+
+---
+
+## Scripts
+
+```bash
+# Run dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Prisma migrations
+npx prisma migrate dev --name migration_name
+npx prisma studio
+```
+
+---
+
+## License
+
+MIT License – free to use and modify.
