@@ -1,6 +1,7 @@
 import React from "react";
 import { GeneratedArticle } from "@/types";
 import { Icon } from "@/components/ui/Icon";
+import Link from "next/link";
 
 interface DashboardProps {
   articles: GeneratedArticle[];
@@ -110,9 +111,12 @@ export const Dashboard: React.FC<DashboardProps> = ({ articles = [] }) => {
                       {new Date(article.generatedAt).toLocaleString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button className="text-white hover:text-brand-dark font-bold">
+                      <Link
+                        href={`generate/${article.id}`}
+                        className="text-white hover:text-brand-dark font-bold"
+                      >
                         View
-                      </button>
+                      </Link>
                     </td>
                   </tr>
                 ))}

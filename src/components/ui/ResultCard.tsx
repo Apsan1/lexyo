@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Icon } from "./Icon";
 
@@ -38,7 +40,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
   };
 
   return (
-    <div className="bg-white dark:bg-neutral-700 border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-6">
+    <div className="bg-white dark:bg-neutral-900 border border-gray-200 shadow-sm overflow-hidden mb-6 w-full">
       <div className="p-4 border-b border-neutral-400 flex justify-between items-center">
         <div className="flex items-center gap-3">
           <Icon icon={icon} className="w-6 h-6 text-brand-primary" />
@@ -49,10 +51,10 @@ export const ResultCard: React.FC<ResultCardProps> = ({
         {copyText && (
           <button
             onClick={handleCopy}
-            className={`transition-all duration-200 ease-in-out text-sm font-medium flex items-center gap-1.5 px-3 py-1.5 rounded-md ${
+            className={`transition-all duration-200 ease-in-out text-xs font-medium flex items-center gap-1.5 px-3 py-1.5 rounded-xs ${
               copied
                 ? "bg-green-100 text-green-700"
-                : "bg-gray-200 text-gray-600 hover:bg-gray-300"
+                : "bg-gray-200 text-black hover:bg-gray-300"
             }`}
           >
             {copied ? (
@@ -64,7 +66,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
           </button>
         )}
       </div>
-      <div className={`p-6 ${isHtml ? "prose prose-blue max-w-none" : ""}`}>
+      <div className={`p-6 ${isHtml ? "prose prose-blue" : ""}`}>
         {children}
       </div>
     </div>
