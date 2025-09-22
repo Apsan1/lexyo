@@ -8,6 +8,7 @@ export async function generateArticleAction(data: {
   focusKeyword?: string;
   audience: string;
   tone: string;
+  additional: string;
 }): Promise<GeneratedArticle> {
   const res = await fetch('/api/generate', {
     method: 'POST',

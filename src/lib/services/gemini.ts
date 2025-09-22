@@ -1,7 +1,7 @@
 'use server';
 
 import { GoogleGenAI, Type } from "@google/genai";
-import type { GeneratedArticle, tone } from '@/types';
+import type { GeneratedArticle, Tone } from '@/types';
 
 if (!process.env.API_KEY) {
     throw new Error("API_KEY environment variable not set");
@@ -102,10 +102,11 @@ export interface GenerateSeoArticleParams {
     focusKeyword: string;
     audience: string;
     questions: string;
-    tone: tone;
+    tone: Tone;
+    additional: string;
 }
 
-export const generateSeoArticle = async ({ topic, focusKeyword, audience, questions, tone }: GenerateSeoArticleParams): Promise<GeneratedArticle> => {
+export const generateSeoArticle = async ({ topic, focusKeyword, audience, questions, tone, additional }: GenerateSeoArticleParams): Promise<GeneratedArticle> => {
     const prompt = `
     You are an expert SEO content strategist and professional copywriter. Generate a comprehensive, SEO-optimized blog article according to the following:
 
@@ -115,6 +116,7 @@ export const generateSeoArticle = async ({ topic, focusKeyword, audience, questi
     - Target Audience: ${audience}
     - Content Tone: ${tone} yet approachable; no childish or overly casual language; highly readable for developers or tech-savvy readers.
     ${questions ? `- Key Questions to Answer: ${questions}` : ''}
+    - Additional: ${additional}
 
     **SEO & Formatting Rules:**
     1. **Markdown only:** Safe for CMS RTE (Strapi, Payload).

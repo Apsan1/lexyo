@@ -51,6 +51,7 @@ export default function GeneratorClient() {
   const [focusKeyword, setFocusKeyword] = useState("");
   const [questions, setQuestions] = useState("");
   const [tone, setTone] = useState("Professional");
+  const [additional, setAdditional] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -70,6 +71,7 @@ export default function GeneratorClient() {
           audience,
           questions,
           tone,
+          additional,
         });
 
         const saveRes = await fetch("/api/articles", {
@@ -145,6 +147,15 @@ export default function GeneratorClient() {
             <option>Authoritative</option>
           </select>
         </div>
+
+        <InputField
+          label="Additionals (Optional)"
+          value={additional}
+          onChange={setAdditional}
+          placeholder="Add optional info..."
+          type="textarea"
+          rows={4}
+        />
 
         <button
           onClick={handleSubmit}
