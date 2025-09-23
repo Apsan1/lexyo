@@ -18,7 +18,7 @@ model GeneratedArticle {
   id                        Int      @id @default(autoincrement())
   title                     String
   metaDescription           String
-  slug                      String   @unique
+  slug                      String 
   keywords                  String[]
   articleContent            String
   seoSuggestions            String[]

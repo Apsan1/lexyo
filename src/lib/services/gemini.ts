@@ -123,10 +123,16 @@ export const generateSeoArticle = async ({ topic, focusKeyword, audience, questi
     2. **Headings:** Use '##' for top-level headings only.
     3. **Engaging Intro:** First paragraph must hook the reader (<150 words) and establish authority.
     4. **SEO Optimization:** Include focus keyword naturally in headings, first paragraph, and meta description. Use related secondary keywords organically.
-    5. **Credible Sources:** Cite only authoritative sources via inline Markdown links. Avoid footnotes.
+    5. **Credible Sources:** Cite only authoritative sources via inline Markdown links. Avoid footnotes. The found credible sources would also be use in the article/blog itself into the content directly.
     6. **Content Quality:** Informative, actionable, and value-driven; do not be academic or “storytelling casual.”
     7. **Meta & Social:** Generate SEO meta description, suggested social snippets, and internal/external linking ideas for better search performance.
     8. **Further Reading:** On some topics only above are not enough so for them include 3 to 5 credible non-paywalled links under '## Further Reading'.
+
+    Guidelines:
+    1. Write an authoritative, fact-rich article in clean Markdown. Use starting heading “##”.
+    2. First paragraph: engaging, <150 words, establish expertise.
+    3. Use the focus keyword naturally in title, intro, one heading, and meta description.
+    4. Cite **credible, high-authority sources** (e.g., docs, research, respected blogs). Search for the best references yourself — include 2–3 as inline Markdown links.
 
     Output a single JSON object strictly following the provided schema.
 `;
