@@ -1,5 +1,3 @@
-'use server';
-
 import { GoogleGenAI, Type } from "@google/genai";
 import type { GeneratedArticle, Tone } from '@/types';
 

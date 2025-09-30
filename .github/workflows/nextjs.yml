@@ -34,10 +34,7 @@ jobs:
 
       - name: Build Next.js site
         run: pnpm exec next build
-
-      - name: Export static site
-        run: pnpm exec next export
-
+        
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
