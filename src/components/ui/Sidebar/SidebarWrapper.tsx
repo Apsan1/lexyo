@@ -19,6 +19,13 @@ export default function SidebarDemo() {
       ),
     },
     {
+      label: "Premium Version",
+      href: "https://apsan.com.np/contact",
+      icon: (
+        <IconBrandTabler className="h-5 w-5 text-neutral-700 dark:text-neutral-200" />
+      ),
+    },
+    {
       label: "More Coming Soon...",
       href: "#",
       icon: (
