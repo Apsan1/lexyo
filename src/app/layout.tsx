@@ -25,8 +25,14 @@ export const metadata: Metadata = {
     "generate seo articles free",
     "Lexyo",
   ],
+  metadataBase: new URL("https://lexyo.apsan.com.np"),
   alternates: {
     canonical: "https://lexyo.apsan.com.np",
+  },
+  icons: {
+    icon: "https://lexyo.apsan.com.np/favicon.ico",
+    shortcut: "https://lexyo.apsan.com.np/favicon.ico",
+    apple: "https://lexyo.apsan.com.np/logo/apple-touch-icon.png",
   },
   openGraph: {
     title: "Free AI SEO Blog Generator | Lexyo",
@@ -63,6 +69,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Lexyo",
+              url: "https://lexyo.apsan.com.np",
+              publisher: {
+                "@type": "Organization",
+                name: "Lexyo",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://lexyo.apsan.com.np/logo/logo.svg",
+                },
+              },
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-row gap-2`}
       >
