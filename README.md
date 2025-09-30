@@ -1,160 +1,45 @@
 # LexyO
 
-A modern web app to generate SEO-optimized articles using AI, manage them in a database, and view detailed structured data. Built with **Next.js (App Router)**, **TypeScript**, **Prisma**, and integrates an AI API for article generation.
+**LexyO** is a modern web app that helps you generate SEO-optimized articles using AI. It allows you to create content based on topic, audience, keywords, tone, and optional additional instructions. You can preview your generated article immediately and see structured data suggestions for SEO.
+
+![LexyO Logo](public/logo/logo.svg)
 
 ---
 
 ## Features
 
-- **AI-powered article generation**: Generate articles based on topic, audience, keywords, and tone.
-- **Structured data support**: Automatically generates JSON-LD for SEO.
-- **Save and manage articles**: Stores articles in a PostgreSQL (or your choice) database via Prisma.
-- **Dynamic routing**: Redirects to a dedicated page for each generated article.
-- **Minimal and responsive UI**: Clean form input page with optional tone and questions.
-- **Export JSON**: Option to export generated articles as `.json` for reuse.
+- **AI-powered article generation**: Generate articles based on your inputs like topic, audience, focus keywords, and tone.
+- **Structured data suggestions**: Automatically provides metadata and SEO-friendly structured content ideas.
+- **Dynamic preview**: View the generated article immediately on the same page.
+- **Social & SEO insights**: Get suggested social media posts, backlinks, internal linking, and image ideas.
+- **User token support**: Securely store your API token in cookies for seamless generation.
+- **Customizable inputs**: Fill out topic, audience, optional questions, tone, and additional notes.
 
 ---
 
-## Tech Stack
+## How to Use
 
-- **Frontend**: Next.js 14+ (App Router), React, TypeScript, Tailwind CSS
-- **Backend**: Next.js API routes, Prisma ORM
-- **Database**: PostgreSQL (or other Prisma-supported DB)
-- **AI Integration**: Gemini API (replaceable with any Google-compatible API)
-- **Markdown Rendering**: ReactMarkdown
-- **Other Tools**: useTransition for smooth async handling
-
----
-
-## Getting Started
-
-Follow these steps to run the app locally:
-
-### 1. Clone the repository
-
-### 2. Install dependencies
-
-```bash
-# Using npm
-npm install
-
-# Or using yarn
-yarn install
-
-# Or using pnpm
-pnpm install
-```
-
-### 3. Configure environment variables
-
-Create a `.env` file in the root:
-
-```env
-DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME?schema=public"
-Gemini_API_KEY="your_Gemini_api_key_here"
-NEXT_PUBLIC_SITE_URL="http://localhost:3000"
-```
-
-- Replace the `DATABASE_URL` with your PostgreSQL connection string.
-- Add your **Gemini API key**.
-- `NEXT_PUBLIC_SITE_URL` is used for dynamic links in structured data or redirects.
-
----
-
-### 4. Set up the database with Prisma
-
-1. **Initialize Prisma**:
-
-```bash
-npx prisma init
-```
-
-2. **Check your `prisma/schema.prisma`** according to the repo.
-
-3. **Run migrations**:
-
-```bash
-npx prisma migrate dev --name init
-```
-
-This will:
-
-- Create the database tables
-- Generate Prisma client
-
-4. **Generate Prisma client** (if needed):
-
-```bash
-npx prisma generate
-```
-
----
-
-### 5. Run the development server
-
-```bash
-npm run dev
-```
-
-Visit [http://localhost:3000](http://localhost:3000) to view the app.
-
----
-
-## Usage
-
-1. Fill out the form:
+1. **Set your API token** (if required). The app will store it securely in a cookie.
+2. Fill in the form fields:
 
    - **Topic** (required)
    - **Audience** (required)
-   - **Focus Keyword** (optional)
+   - **Focus Keyword** (optional, can be broader)
    - **Key Questions** (optional)
-   - **Tone** (select from dropdown)
+   - **Tone** (Professional, Casual, Technical, Witty, Authoritative)
+   - **Additionals** (optional)
 
-2. Click **Generate Article**. The app will:
+3. Click **Generate Article**. The AI will process your inputs and generate the article in real-time.
+4. View your article immediately below the form:
 
-   - Send the data to the AI API
-   - Receive the generated article
-   - Save it in the database
-   - Redirect to `/generate/[id]` to view full article with metadata, JSON-LD, and export options.
-
-3. On the article page, you can:
-
-   - View article content (rendered in Markdown)
-   - View article metadata and focus keywords
-   - Copy JSON-LD for SEO
-   - Export the article as a `.json` file
+   - Read the generated content.
+   - Copy SEO metadata and structured data.
+   - Explore social media post suggestions and backlink ideas.
 
 ---
 
----
+## Notes
 
-## Environment Notes
-
-- **Prisma**: Make sure `DATABASE_URL` points to your database.
-- **AI API**: `Gemini_API_KEY` must be valid for article generation.
-- **Markdown**: Article content supports rich Markdown rendering.
-
----
-
-## Scripts
-
-```bash
-# Run dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-
-# Prisma migrations
-npx prisma migrate dev --name migration_name
-npx prisma studio
-```
-
----
-
-## License
-
-MIT License – free to use and modify.
+- The app **does not require any backend database**; everything runs in the client with your API token.
+- Cookies are used **only for storing the user token** securely and only for this site.
+- The interface is minimal, responsive, and designed to focus on generating content quickly and efficiently.
