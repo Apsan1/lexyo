@@ -98,6 +98,7 @@ export default function GeneratorClient() {
 
         setArticle(result);
       } catch (e) {
+        console.log(e);
         setError("Failed to generate article");
       }
     });

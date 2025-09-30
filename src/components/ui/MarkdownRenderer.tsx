@@ -14,11 +14,9 @@ interface Props {
 export const MarkdownRenderer: React.FC<Props> = ({ content }) => {
   return (
     <article className="markdown-body prose max-w-none p-4">
-      <ReactMarkdown
-        children={content}
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
-      />
+      <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+        {content}
+      </ReactMarkdown>
     </article>
   );
 };
