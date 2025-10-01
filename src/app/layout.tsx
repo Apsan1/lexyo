@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SidebarDemo from "@/components/ui/Sidebar/SidebarWrapper";
+import Landing from "@/components/landing";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,16 +15,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Free AI SEO Blog Generator | Lexyo",
+  title: "Free AI SEO Blog Generator | Lexyo – Create SEO Articles Instantly",
   description:
-    "Generate SEO-optimized blogs for free with Lexyo. AI-powered content writer to rank higher, write faster, and boost your website traffic instantly.",
+    "Generate SEO-optimized blogs instantly for free with Lexyo. AI-powered content writer to help your website rank higher, write faster, and grow traffic.",
   keywords: [
-    "free ai blog generator",
-    "seo content writing tool",
-    "ai blog writer online free",
-    "best seo blog generator 2025",
-    "generate seo articles free",
-    "Lexyo",
+    "free AI blog generator",
+    "SEO content writing tool",
+    "AI blog writer online free",
+    "best SEO blog generator 2025",
+    "generate SEO articles free",
+    "SEO AI content creator",
+    "Lexyo AI tool",
+    "free blog writing AI",
   ],
   metadataBase: new URL("https://lexyo.apsan.com.np"),
   alternates: {
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Free AI SEO Blog Generator | Lexyo",
     description:
-      "Write SEO-optimized blogs instantly with Lexyo. 100% free AI-powered blog generator to rank higher and grow traffic.",
+      "Write SEO-optimized blogs instantly with Lexyo. 100% free AI-powered blog generator to rank higher and grow website traffic.",
     url: "https://lexyo.apsan.com.np",
     siteName: "Lexyo",
     images: [
@@ -55,10 +58,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Free AI SEO Blog Generator | Lexyo",
     description:
-      "AI-powered blog writing tool to generate SEO-optimized articles for free. Boost your rankings with Lexyo.",
+      "AI-powered blog writing tool to generate SEO-optimized articles for free. Boost your Google rankings with Lexyo.",
     images: ["https://lexyo.apsan.com.np/preview.png"],
     creator: "@apsan_",
   },
+  robots: "index, follow",
   category: "SEO Tool",
 };
 
@@ -78,6 +82,12 @@ export default function RootLayout({
               "@type": "WebSite",
               name: "Lexyo",
               url: "https://lexyo.apsan.com.np",
+              potentialAction: {
+                "@type": "SearchAction",
+                target:
+                  "https://lexyo.apsan.com.np/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Lexyo",
@@ -89,14 +99,38 @@ export default function RootLayout({
             }),
           }}
         />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name: "Lexyo Custom Article Generator",
+              description:
+                "Premium AI-powered article generator with hosting, saved content, and API integrations like Gemini Pro or ChatGPT Pro. Perfect for SEO professionals.",
+              brand: "Lexyo",
+              offers: {
+                "@type": "Offer",
+                price: "25.00",
+                priceCurrency: "USD",
+                url: "https://apsan.com.np/contact",
+                availability: "https://schema.org/InStock",
+              },
+            }),
+          }}
+        />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-row gap-2`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen relative`}
       >
-        <nav className="hidden md:flex md:flex-col shrink-0 border-r border-neutral-700">
-          <SidebarDemo />
-        </nav>
-        <main className="w-full">{children}</main>
+        <div className="flex flex-row gap-2">
+          <nav className="hidden md:flex md:flex-col shrink-0 border-r border-neutral-700 fixed top-0 left-0 h-full">
+            <SidebarDemo />
+          </nav>
+          <main className="w-full">{children}</main>
+        </div>
+        <Landing />
       </body>
     </html>
   );
