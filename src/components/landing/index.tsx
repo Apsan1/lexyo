@@ -43,7 +43,7 @@ export default function Landing() {
           <a href="https://moz.com/beginners-guide-to-seo"
              target="_blank"
              className="text-blue-600 dark:text-blue-400 underline">
-             Moz's Beginner’s Guide to SEO
+             Moz&apos;s Beginner’s Guide to SEO
           </a>.
         </p>
         <hr className="border-gray-300 dark:border-neutral-700" />
