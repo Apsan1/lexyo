@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SidebarDemo from "@/components/ui/Sidebar/SidebarWrapper";
 import Landing from "@/components/landing";
+import Banner from "@/components/Banner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -124,6 +125,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen relative`}
       >
+        <Banner />
         <div className="flex flex-row gap-2">
           <nav className="hidden md:flex md:flex-col shrink-0 border-r border-neutral-700 fixed top-0 left-0 h-full">
             <SidebarDemo />

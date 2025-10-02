@@ -153,6 +153,12 @@ export const generateSeoArticle = async ({ topic, focusKeyword, audience, questi
         // Add the generatedAt timestamp
         articleData.generatedAt = new Date().toISOString();
 
+        await fetch("/api/stats", {
+            method: "POST",
+            body: JSON.stringify({ type: "article" }),
+            headers: { "Content-Type": "application/json" },
+        });
+
         return articleData as GeneratedArticle;
 
     } catch (error) {
