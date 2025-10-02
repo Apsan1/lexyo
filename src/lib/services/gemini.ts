@@ -1,5 +1,6 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import type { GeneratedArticle, Tone } from '@/types';
+import { pool } from "./db";
 
 const responseSchema = {
     type: Type.OBJECT,
@@ -153,11 +154,7 @@ export const generateSeoArticle = async ({ topic, focusKeyword, audience, questi
         // Add the generatedAt timestamp
         articleData.generatedAt = new Date().toISOString();
 
-        await fetch("/api/stats", {
-            method: "POST",
-            body: JSON.stringify({ type: "article" }),
-            headers: { "Content-Type": "application/json" },
-        });
+        await pool.query("UPDATE counters SET articles = articles + 1 WHERE id = 1");
 
         return articleData as GeneratedArticle;
 
