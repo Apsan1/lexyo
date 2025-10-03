@@ -1,5 +1,7 @@
 import { pool } from "@/lib/services/db";
 
+export const dynamic = "force-dynamic";
+
 export default async function Banner() {
   await pool.query("UPDATE counters SET visits = visits + 1 WHERE id = 1");
 
