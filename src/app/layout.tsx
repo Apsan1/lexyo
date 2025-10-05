@@ -83,12 +83,7 @@ export default function RootLayout({
               "@type": "WebSite",
               name: "Lexyo",
               url: "https://lexyo.apsan.com.np",
-              potentialAction: {
-                "@type": "SearchAction",
-                target:
-                  "https://lexyo.apsan.com.np/search?q={search_term_string}",
-                "query-input": "required name=search_term_string",
-              },
+              image: "https://lexyo.apsan.com.np/logo/logo.svg",
               publisher: {
                 "@type": "Organization",
                 name: "Lexyo",
@@ -113,7 +108,7 @@ export default function RootLayout({
               brand: "Lexyo",
               offers: {
                 "@type": "Offer",
-                price: "25.00",
+                price: "40.00",
                 priceCurrency: "USD",
                 url: "https://apsan.com.np/contact",
                 availability: "https://schema.org/InStock",
