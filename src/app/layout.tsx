@@ -80,38 +80,51 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Lexyo",
-              url: "https://lexyo.apsan.com.np",
-              image: "https://lexyo.apsan.com.np/logo/logo.svg",
-              publisher: {
-                "@type": "Organization",
-                name: "Lexyo",
-                logo: {
-                  "@type": "ImageObject",
-                  url: "https://lexyo.apsan.com.np/logo/logo.svg",
-                },
-              },
-            }),
-          }}
-        />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
               "@type": "Product",
               name: "Lexyo Custom Article Generator",
               description:
                 "Premium AI-powered article generator with hosting, saved content, and API integrations like Gemini Pro or ChatGPT Pro. Perfect for SEO professionals.",
-              brand: "Lexyo",
+              image: "https://lexyo.apsan.com.np/preview.png",
+              brand: {
+                "@type": "Brand",
+                name: "Lexyo",
+              },
               offers: {
                 "@type": "Offer",
-                price: "40.00",
+                price: "25.00",
                 priceCurrency: "USD",
                 url: "https://apsan.com.np/contact",
                 availability: "https://schema.org/InStock",
+                shippingDetails: {
+                  "@type": "OfferShippingDetails",
+                  shippingRate: {
+                    "@type": "MonetaryAmount",
+                    value: "0.00",
+                    currency: "USD",
+                  },
+                  deliveryTime: {
+                    "@type": "ShippingDeliveryTime",
+                    handlingTime: {
+                      "@type": "QuantitativeValue",
+                      minValue: 0,
+                      maxValue: 1,
+                      unitCode: "d",
+                    },
+                    transitTime: {
+                      "@type": "QuantitativeValue",
+                      minValue: 0,
+                      maxValue: 2,
+                      unitCode: "d",
+                    },
+                  },
+                },
+                hasMerchantReturnPolicy: {
+                  "@type": "MerchantReturnPolicy",
+                  returnPolicyCategory:
+                    "https://schema.org/MerchantReturnFiniteReturnWindow",
+                  merchantReturnDays: 7,
+                  applicableCountry: "US",
+                },
               },
             }),
           }}
