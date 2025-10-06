@@ -91,7 +91,7 @@ export default function RootLayout({
               },
               offers: {
                 "@type": "Offer",
-                price: "25.00",
+                price: "40.00",
                 priceCurrency: "USD",
                 url: "https://apsan.com.np/contact",
                 availability: "https://schema.org/InStock",
