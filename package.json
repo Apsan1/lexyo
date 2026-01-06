@@ -15,7 +15,7 @@
     "github-markdown-css": "^5.8.1",
     "js-cookie": "^3.0.5",
     "motion": "^12.23.14",
-    "next": "15.5.3",
+    "next": "15.5.9",
     "pg": "^8.16.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
